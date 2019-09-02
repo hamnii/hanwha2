@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!-- 생성자를 통해 주입 -->
+<!-- <bean id="car" class="Lab3.Car">
+	<constructor-arg name = "model" value="BMW520"/>
+	<constructor-arg name = "price" value="6000"/>
+
+</bean> -->
+
+<!-- Setter를 통해 주입 -->
+<bean id="car" class="Lab3.Car">
+	<property name="model" value="그랜저"></property>
+	<property name="price" value="4000"></property>
+</bean>
+
+
+<!-- 생성자를 통해 주입 -->
+<!-- <bean id="people" class="Lab3.People">
+	<constructor-arg name ="name" value="권혜민" />
+	<constructor-arg name="phone" value="010-1234-5678"/>
+	<constructor-arg ref="car"/> car가 만들어져있는 걸 참조
+</bean> -->
+
+<!-- Setter통해 주입 -->
+<!-- <bean id="people" class="Lab3.People">
+	<property name="name" value="해민"></property> property 하나만 넣으면 나머지는 null로 나옴
+	<property name="phone" value="010-4568-4545"></property>
+	<property name="car" ref="car"></property>
+</bean> -->
+
+<bean id="license1" class="Lab3.License" p:title="ocp" p:year="2019"></bean>
+<bean id="license2" class="Lab3.License" p:title="sql.d" p:year="2018"></bean>
+
+<bean id="people" class="Lab3.People"
+	p:name="해민"
+	p:phone="12345-456"
+	autowire="byType" scope="prototype" > <!-- byType으로 해도 car와 license 다 들어감 (같은 Car 타입, 같은 License타입) -->
+	
+<!-- 	<property name="licenses">
+		<list>
+			<ref bean="license1"/>
+			<ref bean="license2"/>
+		</list>
+	</property> -->
+	
+	<property name="major">
+	<list>
+		<value>컴퓨터공학과</value>
+		<value>통계학과</value>
+		
+	</list>
+	
+	</property>
+	
+</bean>
+
+
+</beans>

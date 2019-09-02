@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!--  xml문서이고 버전 1.0 인코딩 utf-8입니다 : xml pi (xml정의)-->
+<!DOCTYPE mapper			
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">	<!-- 데이터의 구조를 설정함-->
+    
+    
+    <mapper namespace="com.hanwha.emp" >					<!--  이름이 중복되지 않게 이름을 url형태로 주는 것이 일반적. selectall, selectbyid 등 다 mapper 만들 것이기 때문에ㅔ-->
+    	<select id="selectall" resultType="com.hanwha.model.EmpVO" >
+    		select * from employees	<!-- 세미콜론 쓰면 안됨-->
+    	
+    	</select>
+    
+    	<select id="selectbyid" 
+    	parameterType="int" 
+    	resultType="com.hanwha.model.EmpVO" >
+ 
+    		select * from employees where employee_id=#{aa}	<!--여러 개 받을 거면 이름이 중요한데 그게 아니기때문에 이름은 아무거나 aa로 줘도 됨  -->
+    	</select>
+    	
+    	<select id="selectallmanager" resultType="int" >
+    		select distinct manager_id from employees
+    	</select>
+    	
+    	 <select id="selectalljob" resultType="string" >
+    		select distinct job_id from jobs
+    	</select>
+    	
+    	
+    	
+    	<insert id="insert" parameterType="com.hanwha.model.EmpVO">
+    		insert into employees values(#{employee_id},#{first_name},#{last_name},#{email},#{phone_number},#{hire_date},#{job_id},#{salary},#{commission_pct},#{manager_id},#{department_id})
+    	
+    	</insert>
+    
+    	<update id="update" parameterType="com.hanwha.model.EmpVO">
+    		update employees set
+    				 first_name =#{first_name},
+					 last_name=#{last_name},
+					email=#{email},
+					 phone_number=#{phone_number},
+					 hire_date=#{hire_date},
+					job_id=#{job_id},
+					salary=#{salary},
+					commission_pct=#{commission_pct},
+					manager_id=#{manager_id},
+					 department_id=#{department_id} 
+					 where employee_id =#{employee_id}
+    	</update>
+    	
+    	<delete id="delete" parameterType="int">
+    		delete from employees where employee_id =#{dd}
+    	</delete>
+    	
+    
+    
+    </mapper>
