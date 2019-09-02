@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper			
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">	<!-- 데이터의 구조를 설정함-->
+    
+    
+    <mapper namespace="com.hanwha.mypjt" >					<!--  이름이 중복되지 않게 이름을 url형태로 주는 것이 일반적. selectall, selectbyid 등 다 mapper 만들 것이기 때문에ㅔ-->
+    	<select id="selectall" resultType="com.hanwha.mypjt.HospitalDTO" >
+    		select * from hospital	<!-- 세미콜론 쓰면 안됨-->
+    	</select>
+    
+    
+    
+    </mapper>
