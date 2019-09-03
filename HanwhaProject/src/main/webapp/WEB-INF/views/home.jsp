@@ -46,7 +46,7 @@ header {
 /* Create two columns/boxes that floats next to each other */
 nav {
   float: left;
-  width: 30%;
+  width: 15%;
   height: 600px; /* only for demonstration, should be removed */
   background: #ccc;
   padding: 20px;
@@ -58,10 +58,14 @@ nav ul {
   padding: 0;
 }
 
+nav ul li{
+	height: 50px;
+}
+
 article {
   float: left;
   padding: 20px;
-  width: 70%;
+  width: 85%;
   background-color: #f1f1f1;
   height: 600px; /* only for demonstration, should be removed */
 }
@@ -72,6 +76,7 @@ section:after {
   display: table;
   clear: both;
 }
+
 
 /* Style the footer */
 footer {
@@ -102,7 +107,7 @@ footer {
   <nav>
     <ul>
       <li><button class="button">사진게시판</button></li>
-      <li><button class="button">자유게시판</button></li>
+      <li><button onclick="location.href='board'" class="button">자유게시판</button></li>
       <li><button onclick="location.href='list'" class="button">동물병원보기</button></li>
     </ul>
   </nav>

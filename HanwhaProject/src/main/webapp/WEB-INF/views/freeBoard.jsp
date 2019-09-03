@@ -25,39 +25,37 @@
 
 .button:active {
   background-color: #3e8e41;
-  box-shadow: 0 5px #666;"src/main/resources/mappers/hospital/hospitalMapper.xml"
+  box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 </style>
 <meta charset="utf-8">
 <title>Insert title here</title>
+<script>
+
+</script>
 </head>
 <body>
 
 
 <div style="background-color:#ffcccc ; height:150px;text-align: center;font-size:30px;vertical-align:middle;">
-</br>응급병원조회
+</br>자유게시판
 	<button onclick="location.href='home'" class="button">home</button>
 </div>
-				<select name="myaddress" style="width:100px;height:50px;">
-				<c:forEach items="${etclist}" var="etc">
-					<option>${etc}</option>
-				</c:forEach></select>
+<button onclick="location.href='boardinsert'">글쓰기</button>
 <table border="1">
 			<tr>
-				<th>병원이름</th>
-				<th>병원주소</th><th>병원 전화번호</th>
-				<th>영업시간</th>
-				
+				<th>글번호</th>
+				<th>제목</th><th>아이디</th>
+				<th>작성일자</th>
+			
 			</tr>
-			
-			
-			<c:forEach var="hospital" items="${hospitallist }">
+			<c:forEach var="board" items="${boardlist }">
 			<tr>
-				<td>${hospital.hospital_name}</td>
-				<td>${hospital.hospital_address}</td>
-				<td>${hospital.phone}</td>
-				<td>${hospital.business_hour}</td>
+				<td>${board.bno}</td>
+				<td>${board.title }</td>
+				<td>${board.id}</td>
+				<td>${board.writedate}</td>
 				 
 			</tr>
 			</c:forEach>

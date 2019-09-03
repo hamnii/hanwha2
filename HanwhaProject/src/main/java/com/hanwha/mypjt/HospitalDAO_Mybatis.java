@@ -14,10 +14,12 @@ public class HospitalDAO_Mybatis {
 	
 	
 	public List<HospitalDTO> selectAll() { 
-		return session.selectList("com.hanwha.mypjt.selectall");
-
-	
-		//deptMapper가면 있는 namespace쓰고 id쓰고 그 select문장 실행
+		return session.selectList("com.hanwha.hospital.selectall");
+//deptMapper가면 있는 namespace쓰고 id쓰고 그 select문장 실행
+	}
+	public List<String> selectAllEtc(){
+		return session.selectList("com.hanwha.hospital.selectalletc");
+				
 	}
 	
 }
