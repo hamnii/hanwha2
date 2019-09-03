@@ -18,6 +18,17 @@ public class BoardDAO_Mybatis {
 	public int insertBoard(BoardDTO board) {
 		return session.insert("com.hanwha.board.insert", board);
 	}
+	public int deleteBoard(int bno) {
+		return session.delete("com.hanwha.board.delete", bno);
+
+	}
+	public BoardDTO selectbybno(int bno) {
+		// TODO Auto-generated method stub
+		return session.selectOne("com.hanwha.board.selectbybno", bno);	
+	}
+
+	
+	
 	
 	
 }

@@ -13,4 +13,7 @@
     		select distinct etc from hospital
     	</select>
     
+        <select id="selectbyaddress" parameterType="string" resultType="com.hanwha.mypjt.HospitalDTO">
+        select * from hospital	where etc = #{aa}
+        </select>
     </mapper>

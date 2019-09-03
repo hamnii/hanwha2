@@ -10,10 +10,19 @@
     	</select>
     	
     	<insert id="insert" parameterType="com.hanwha.mypjt.BoardDTO">
-    		insert into board values(#{title},#{id},#{bno},#{content},#{writedate})
-    	
-    		
+    		insert into board values(#{title},#{member_id},seq_bno.nextval,#{content},sysdate,#{fileName})
     	</insert>
+    	
+    	<delete id="delete" parameterType="int">
+    		delete from board where bno =#{dd}
+    	</delete>
+    
+    <select id="selectbybno" parameterType="int" resultType="com.hanwha.mypjt.BoardDTO" >
+ 
+    		select * from board	where bno=#{bno}	<!--여러 개 받을 거면 이름이 중요한데 그게 아니기때문에 이름은 아무거나 aa로 줘도 됨  -->
+    		
+    	</select>
     
     
+   
     </mapper>

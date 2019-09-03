@@ -1,18 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <style>
+        /* .help-block 을 일단 보이지 않게 설정 */
+        #myForm .help-block{
+            display: none;
+        }
+        /* glyphicon 을 일단 보이지 않게 설정 */
+        #myForm .glyphicon{
+            display: none;
+        }
+    </style>
 </head>
 
 <style>
-@import "bourbon";
+header {
+  background-color: #ffcccc;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
 
 body {
 	background: #eee !important;	
@@ -63,34 +78,45 @@ body {
 	  border-top-right-radius: 0;
 	}
 }
+.button {
+  display: inline-block;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color:  #e7e7e7;
+  background-color:#ff8080;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
 
+}
 </style>
 
 
 <body>
+<header>
+<h2>로그인</h2>
+<button onclick="location.href='home'" class="button">home</button><br/></header>
   <div class="wrapper">
-    <form class="form-signin">       
+    <form class="form-signin" action="login" method="post">       
       <h2 class="form-signin-heading">Please login</h2>
-      <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
-      <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
-      <label class="checkbox">
-        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-      </label>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+      <input type="text" class="form-control" name="member_id" placeholder="Id"  /><br>
+      <input type="password" class="form-control" name="password" placeholder="Password" />      
+   	  <br/>
+   	  <br/>
+      <button class="button" type="submit">로그인</button>   
+      <input class="button" type="button" value="회원가입" onclick="location.href='join'" style="text-align: center"/>  
     </form>
+	
+
   </div>
 
 
 
 
-<div style="background-color:#ffcccc ; height:250px;text-align: center;font-size:30px;vertical-align:middle;">
-</br><h1>로그인</h1></div>
 
-<form action="login" method="post" >
-아이디 : <input type="text" name="userid"><br>
-비밀번호 : <input type="password" name="userpw"><br>
-<input type="submit" value="입력하기">
-</form>
 
 </body>
 </html>

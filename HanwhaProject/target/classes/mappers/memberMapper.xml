@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper			
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">	<!-- 데이터의 구조를 설정함 -->
+
+
+<mapper namespace="com.hanwha.member">					<!-- 이름이 중복되지 않게 이름을 url형태로 주는 것이 일반적. selectall, selectbyid 등 다 mapper 만들 
+		것이기 때문에ㅔ -->
+
+
+	<insert id="insert" parameterType="com.hanwha.mypjt.MemberDTO">
+		insert into member
+		values(#{name},#{member_id},#{password},#{birthday},#{email},#{address},#{pet})
+	</insert>
+	
+	<select id="login" parameterType="com.hanwha.mypjt.MemberDTO" resultType="com.hanwha.mypjt.MemberDTO">
+	    select * from member where member_id=#{member_id} and password=#{password}
+	  
+	</select>
+
+	
+
+</mapper>

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    <c:set var="path" value="${pageContext.request.contextPath}"></c:set>
+
 <!DOCTYPE html>
 <html>
 <style>
@@ -96,9 +100,11 @@ footer {
 </style>
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
 </head>
 <body>
+
 <header>
   <h2>응급병원조회</h2>
 </header>
@@ -106,14 +112,29 @@ footer {
 <section>
   <nav>
     <ul>
-      <li><button class="button">사진게시판</button></li>
-      <li><button onclick="location.href='board'" class="button">자유게시판</button></li>
+     
+      <li><button onclick="location.href='board'" class="button">귀여운동물들</button></li>
       <li><button onclick="location.href='list'" class="button">동물병원보기</button></li>
+           
+      <li>
+   
+      <c:if test="${member==null}">
+           <button onclick="location.href='login'" class="button">로그인</button>
+      </c:if>
+      
+      <c:if test="${member!=null}">
+           <button onclick="location.href='logout'" class="button">로그아웃</button>
+      </c:if>
+      
+      
+      </li>
+      
     </ul>
   </nav>
   
   <article>
-  	
+	<img alt="이미지" src="${path }/resources/율무6.jpg" width="700px" height="500px">
+    <img alt="이미지" src="${path }/resources/율무귀여운율무.jpg" width="700px" height="500px">
   </article>
 </section>
 
