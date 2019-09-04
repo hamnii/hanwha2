@@ -27,6 +27,17 @@ public class BoardDAO_Mybatis {
 		return session.selectOne("com.hanwha.board.selectbybno", bno);	
 	}
 
+	public List<BoardDTO> selectbythumb() {
+		// TODO Auto-generated method stub
+		return session.selectList("com.hanwha.board.selectbythumb");
+	}
+	//게시판 수정하기
+	public int updateBoard(BoardDTO board) {
+		return session.update("com.hanwha.board.update",board);
+	}
+
+
+
 	
 	
 	

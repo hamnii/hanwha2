@@ -96,47 +96,75 @@ $(function(){		//아래 페이지가 다 로딩된 후 이 함수를 실행한�
 	$("#dupbutton").click(function(){ 	//그 때 #dubbutton아이디객체를 클릭하면 이 함수가 실행된다
 		//Ajax
 		$.get("memberdupcheck", {"member_id": $("#member_id").val()},  function(data){ //$.get("요청하려는 url", callback) -> /memberdupcheck url을 요청하고 작업 수행 후 function(data){}; 함수를 콜백
-			
+			$("#joinbutton").removeAttr("disabled");
 			$("#message").text(data==1?"이미 사용중인 아이디입니다.":"사용가능한 아이디입니다.");
+			
+			if(data==1) {
+				$("#joinbutton").attr("disabled", "disabled");
+				$("#join").text("중복된 아이디가 있습니다.");
+			} else if(data!=1){
+				$("#join").text("제출하기.");
+			}
 		});
+		
+	  
 	});
 } );
+
+function check(){
+	if(!document.joinform.name.value){
+		alert("이름을 입력하세요");
+		return false;
+	}
+	if(!document.joinform.member_id.value){
+		alert("id를 입력하세요");
+		return false;
+	}
+	if(!document.joinform.password.value){
+		alert("비밀번호를 입력하세요");
+		return false;
+	}
+	if(!document.joinform.pet.value){
+		alert("반려동물을 키우는 중인지 확인하세요");
+		return false;
+	}	
+}
 
 </script>
 
 
 <body>
 <div class="container">
-    <h3>회원가입 폼 입니다.</h3>
-    <form action="insertmember" method="post" id="myForm" name="createMemberForm" >
+    <h2 style="font: bold; color:white;background-color: #ff8080">회원가입 폼 입니다.</h2>
+    <form action="insertmember" method="post" id="joinform" name="joinform" onsubmit="return check()">
     
       <div class="form-group has-feedback">
             <label class="control-label" for="name">이름</label>
             <input class="form-control" type="text" name="name" id="name"/>
         </div>
         <div class="form-group has-feedback">
-            <label class="control-label" for="member_id">아이디</label>
-            <input class="form-control" type="text" name="member_id" id="member_id"/>
-            <input type="button" class="button" value="중복체크" id="dupbutton"/>
-            <div style="font-style: italic; font:bolder; color: red"  id="message"></div>	
+            <label class="control-label" for="member_id">아이디</label><br/>
+            <input class="form-control" type="text" name="member_id" id="member_id" style="float: right"/>
+            <input type="button" class="button" value="중복체크" id="dupbutton"style="float: right"/>
+            <br/><div style="font-style: italic; font:bolder; color: red" id="message" ></div>	
         </div>
         <div class="form-group has-feedback">
-            <label class="control-label" for="password">비밀번호</label>
+           <br/> <label class="control-label" for="password">비밀번호</label>
             <input class="form-control" type="password" name="password" id="password"/>
         </div>
         
          <div class="form-group has-feedback">
-            <label class="control-label" for="birthday">생년월일</label>
+            <label class="control-label" for="birthday">생년월일(선택)</label>
             <input class="form-control" type="date" name="birthday" id="birthday"/>
         </div>
         <div class="form-group has-feedback">
-            <label class="control-label" for="email">이메일</label>
+            <label class="control-label" for="email">이메일(선택)</label>
             <input class="form-control" type="text" name="email" id="email"/>
             
         </div>
            <div class="form-group has-feedback">
-            <label class="control-label" for="address">주소</label>
-            <input class="form-control" type="text" name="address" id="address"/>
+            <label class="control-label" for="address">주소(선택)</label><br/>
+            <input class="form-control" type="text" name="address" id="address" />
             
         </div>
       
@@ -145,9 +173,10 @@ $(function(){		//아래 페이지가 다 로딩된 후 이 함수를 실행한�
         	  <input type="radio" name="pet" value="1"> Y
            	 <input type="radio" name="pet" value="0"> N<br>
         </div>
-  
-        <button class="button" style="font-size: 20px" type="submit" id="joinbutton">가입</button>
-        
+  		
+        <button class="button" style="font-size: 20px; float=:left" type="submit" id="joinbutton" disabled="disabled" >가입</button>
+          <div style="font-style: italic; font:bold; color: red; float:right" id="join" >아이디 중복을 먼저 확인하세요</div>	
+
     </form>
 </div>
 

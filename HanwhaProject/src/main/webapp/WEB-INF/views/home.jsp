@@ -102,6 +102,19 @@ footer {
 <meta charset="UTF-8">
 
 <title>응급동물병원조회</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.js"></script>
+<link rel="stylesheet" href="resources/css/bootstrap.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(function(){
+     $.get("boardthumb", function(data){
+    	   
+           $("#here").html(data);
+     }); 
+  });
+
+</script>
 </head>
 <body>
 
@@ -111,6 +124,10 @@ footer {
 
 <section>
   <nav>
+  	 <c:if test="${member!=null}">
+          <li> <button style="font-size: 15px" disabled="disabled" class="button">${member.name }님 안녕하세요!</button></li>
+      </c:if>
+    <br/><br/>
     <ul>
      
       <li><button onclick="location.href='board'" class="button">귀여운동물들</button></li>
@@ -130,13 +147,14 @@ footer {
       
       
       </li>
-      
     </ul>
   </nav>
   
   <article>
-	<img alt="이미지" src="${path }/resources/율무6.jpg" width="700px" height="500px">
-    <img alt="이미지" src="${path }/resources/율무귀여운율무.jpg" width="700px" height="500px">
+    <button class="button" onclick="location.href='boardthumb'" style="font-size: 15px;float: left">공지사항</button><br/><br/>
+    <div id="here" style="display: inline-block;"></div>
+	<!-- <img alt="이미지" src="${path }/resources/율무6.jpg" width="400px" height="500px" style="display: inline; float: right"> -->
+    <img alt="이미지" src="${path }/resources/율무귀여운율무.jpg" width="400px" height="500px" style="display: inline;float: right">
   </article>
 </section>
 

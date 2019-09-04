@@ -56,40 +56,28 @@ article {
 </style>
 <meta charset="utf-8">
 <title>응급동물병원조회</title>
+<script>
+
+</script>
+</head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/bootstrap.js"></script>
 <link rel="stylesheet" href="resources/css/bootstrap.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
+
 <body>
 
-
-<header><h2>자유게시판</h2>
-
-	<button onclick="location.href='home'" class="button">home</button>
-</header>
-
-<c:if test="${member==null}">
-</c:if>
-<br/>
-<button class="button" style="display: none;font-size: 15px" onclick="location.href='boardinsert'" >글쓰기</button><br/><br/>
 <div class="container">
-<c:if test="${member!=null}">
-<button class="button" style="font-size: 15px" onclick="location.href='boardinsert'">글쓰기</button><br/><br/>
-</c:if>
 <table border="1" class="table table-hover">
-	<thead>
 			<tr>
-				<th style="width: 2px">순서</th>
-				<th style="width: 200px">제목</th><th style="width:50px">아이디</th>
-				<th style="width: 100px">작성일자</th>
+				<th style="width: 20px">순서</th>
+				<th style="width: 100px">제목</th><th style="width:10px">아이디</th>
+				<th style="width: 80px">작성일자</th>
 				<th style="width: 100px">이미지 미리보기</th>
 			
 			</tr>
-			<thead>
 			<c:set var="cnt" value="0"/>
 			<c:forEach var="board" items="${boardlist }">
-			<tbody>
 			<tr>
 			    <c:set var="cnt" value="${cnt+1}"/>
 				<td>${cnt}</td>
@@ -98,13 +86,12 @@ article {
 				<td>${board.writedate}</td>
 				<td><img alt="이미지" src="${path }/resources/${board.fileName}" width="100px" height="100px">
 			</tr>
-			</tbody>
 			</c:forEach>
 		</table>
-</div>
+
 
 	
-
+</div>
 
 </body>
 </html>

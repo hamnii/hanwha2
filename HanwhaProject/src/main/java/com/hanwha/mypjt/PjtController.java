@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -98,6 +97,16 @@ public class PjtController {
 		return mv;
 	}
 	
+	//게시판 썸네일 보여주기
+	@RequestMapping("/boardthumb")
+	public ModelAndView boardthumb() {
+		ModelAndView mv= new ModelAndView();
+		List<BoardDTO> list= b_dao.selectbythumb();
+		mv.addObject("boardlist", list);
+		mv.setViewName("boardthumb");
+		return mv;
+	}
+	
 	@RequestMapping("/boarddetail")
 	public ModelAndView boardDetail(int bno) {
 		ModelAndView mv= new ModelAndView();
@@ -106,11 +115,20 @@ public class PjtController {
 		mv.setViewName("boardDetail");
 		return mv;
 	}
+	//게시물삭제하기
 	@RequestMapping(value="boarddelete",method=RequestMethod.GET)
 	public String detailDelete(int bno) {
 		b_dao.deleteBoard(bno);
 		return "redirect:board";
 	}
+	
+	//게시물수정하기
+	@RequestMapping(value="boardupdate",method=RequestMethod.POST)
+	public String boardupdate(BoardDTO board) {
+		b_dao.updateBoard(board);
+		return "redirect:boardDetail";
+	}
+	
 	
 	
 	@RequestMapping(value="/boardinsert",method=RequestMethod.GET)
@@ -130,6 +148,7 @@ public class PjtController {
 		return "hospitallist";
 	}
 	
+	
 	@RequestMapping(value="/boardinsert",method=RequestMethod.POST)
 	 public String boardInsertPost(BoardDTO board,HttpServletRequest request) {	//frontController가 request를 줌 
 	 MultipartFile uploadfile =board.getUploadfile();
@@ -141,7 +160,7 @@ public class PjtController {
 	 String path = request.getSession().getServletContext().getRealPath("/resources");
 	 System.out.println("웹서버의 실제 경로:" + path);
 	 String fileName = uploadfile.getOriginalFilename();
-	String fpath = path +"\\" + fileName ;	//full Path
+	 String fpath = path +"\\" + fileName ;	//full Path
 	 board.setFileName(fileName); //파일의 경로 저장
 	 try {
 	 // 방법1) FileOutputStream 사용
@@ -181,8 +200,8 @@ public class PjtController {
 
 	@RequestMapping(value="/insertmember",method=RequestMethod.POST)
 	public String insertMemberPost(MemberDTO member) {
-		m_dao.insertMember(member);
-		
+		int ref=m_dao.insertMember(member);
+		System.out.println(ref);
 		return "redirect:home";
 		
 	}
@@ -211,6 +230,5 @@ public class PjtController {
 					
 		}
 	}
-	
 
 }

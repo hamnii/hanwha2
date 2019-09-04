@@ -6,15 +6,18 @@
 <head>
 <style>
 
-</style>
 <meta charset="utf-8">
 <title>응급동물병원조회</title>
-</head>
-<style>
 </style>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="resources/css/bootstrap.css">
 <body>
 
-<table border="1">
+<table border="1" class="table table-hover">
 			<tr>
 				<th>병원이름</th>
 				<th>병원주소</th><th>병원 전화번호</th>

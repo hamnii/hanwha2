@@ -23,6 +23,11 @@
     		
     	</select>
     
-    
-   
+    <select id="selectbythumb" resultType="com.hanwha.mypjt.BoardDTO" >
+ 
+    		select * from board	where member_id='admin'	<!--여러 개 받을 거면 이름이 중요한데 그게 아니기때문에 이름은 아무거나 aa로 줘도 됨  -->
+    		
+    	</select>
+    	
+    	
     </mapper>
