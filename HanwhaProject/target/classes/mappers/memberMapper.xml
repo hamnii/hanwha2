@@ -18,6 +18,9 @@
 	  
 	</select>
 
+	<select id="dup" parameterType="String" resultType="com.hanwha.mypjt.MemberDTO">
+		select * from member where member_id=#{member_id}
+	</select>
 	
-
+ 
 </mapper>

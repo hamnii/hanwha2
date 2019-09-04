@@ -7,20 +7,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<title>Insert title here</title>
-</head>
+<title>응급동물병원조회</title></head>
 <style>
 body{
     display: table-cell;
     vertical-align: middle;
     background-color: #ffcccc !important;
 }
-
 
 html { 
     display: table;
@@ -91,6 +89,21 @@ html, body {
 }
 </style>
 
+<script>
+
+$(function(){		//아래 페이지가 다 로딩된 후 이 함수를 실행한다(익명함수)
+	
+	$("#dupbutton").click(function(){ 	//그 때 #dubbutton아이디객체를 클릭하면 이 함수가 실행된다
+		//Ajax
+		$.get("memberdupcheck", {"member_id": $("#member_id").val()},  function(data){ //$.get("요청하려는 url", callback) -> /memberdupcheck url을 요청하고 작업 수행 후 function(data){}; 함수를 콜백
+			
+			$("#message").text(data==1?"이미 사용중인 아이디입니다.":"사용가능한 아이디입니다.");
+		});
+	});
+} );
+
+</script>
+
 
 <body>
 <div class="container">
@@ -104,7 +117,8 @@ html, body {
         <div class="form-group has-feedback">
             <label class="control-label" for="member_id">아이디</label>
             <input class="form-control" type="text" name="member_id" id="member_id"/>
-            	
+            <input type="button" class="button" value="중복체크" id="dupbutton"/>
+            <div style="font-style: italic; font:bolder; color: red"  id="message"></div>	
         </div>
         <div class="form-group has-feedback">
             <label class="control-label" for="password">비밀번호</label>
@@ -131,8 +145,9 @@ html, body {
         	  <input type="radio" name="pet" value="1"> Y
            	 <input type="radio" name="pet" value="0"> N<br>
         </div>
+  
+        <button class="button" style="font-size: 20px" type="submit" id="joinbutton">가입</button>
         
-        <button class="button" style="font-size: 20px" type="submit">가입</button>
     </form>
 </div>
 

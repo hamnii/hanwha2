@@ -5,7 +5,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>응급동물병원조회</title>
+    
     <link rel="stylesheet" href="/css/bootstrap.css"/>
     <style>
         /* .help-block 을 일단 보이지 않게 설정 */

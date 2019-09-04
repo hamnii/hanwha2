@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>응급동물병원조회</title>
 </head>
 <style>
 .button {

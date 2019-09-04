@@ -19,6 +19,13 @@ public class MemberDAO_Mybatis {
 		return session.selectOne("com.hanwha.member.login",member);
 	}
 
+//	public String dupMember(String member_id) {
+//		return session.selectOne("com.hanwha.member.dup", member_id);
+//	}
 
+	public MemberDTO dupMember(String member_id) { 
+		return session.selectOne("com.hanwha.member.dup", member_id);
+		
+	}
 
 }

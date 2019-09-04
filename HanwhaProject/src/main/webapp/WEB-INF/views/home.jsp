@@ -101,7 +101,7 @@ footer {
 <head>
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
+<title>응급동물병원조회</title>
 </head>
 <body>
 
@@ -119,7 +119,9 @@ footer {
       <li>
    
       <c:if test="${member==null}">
-           <button onclick="location.href='login'" class="button">로그인</button>
+          <li> <button onclick="location.href='login'" class="button">로그인</button></li>
+		 <li>  <button onclick="location.href='join'" class="button">회원가입</button></li>
+
       </c:if>
       
       <c:if test="${member!=null}">
